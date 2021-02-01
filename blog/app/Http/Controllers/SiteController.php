@@ -23,11 +23,6 @@ class SiteController extends Controller
         return view('AboutPage');
     }
 
-    public function blog()
-    {
-        return view('BlogPage');
-    }
-
     public function contact()
     {
         return view('ContactPage');
