@@ -35,6 +35,9 @@ Route::get('update/category/{id}', [SiteController::class, 'updatecategory'])->n
 Route::get('/blog',[PostController::class, 'blogpost']);
 Route::post('store/post', [PostController::class, 'storepost'])->name('store.post');
 Route::get('all/post', [PostController::class, 'allpost'])->name('all.post');
+Route::get('view/post/{id}',[PostController::class, 'viewpost'])->name('view.post');
+Route::get('edit/post/{id}',[PostController::class, 'editpost'])->name('edit.post');
+Route::get('update/post/{id}', [PostController::class, 'updatepost'])->name('update.post');
 
 // Route::get('/{name}/{email}/{phone}', [SiteController::class, 'home']);
 

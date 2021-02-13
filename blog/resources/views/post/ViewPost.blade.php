@@ -80,34 +80,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <a href="{{url('/blog')}}" class="btn btn-danger">Write Post</a>
-                <hr>
+                <a href="{{route('all.post')}}" class="btn btn-info">All Post</a>
+                <div>
+                    <h3>{{$post->title}}</h3>
+                    <img src="{{asset($post->image)}}" height="768px" width="1024px" >
+                    <p>Category Name: {{$post->name}}</p>
+                    <p>{{$post->details}}</p>
+                </div>
             </div>
-            <hr>
-            <table class="table table-risponsive">
-                <tr>
-                    <th>SL</th>
-                    <th>Category ID</th>
-                    <th>Title</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                </tr>
-
-                @foreach($post as $row)
-                <tr>
-                    <td>{{$row->id}}</td>
-                    <td>{{$row->name}}</td>
-                    <td>{{$row->title}}</td>
-                    <td><img src="{{URL($row->image)}}" style="height: 50px; width:100px; "></td>
-                    <td>
-                        <a href="{{url('edit/post/'.$row->id)}}" class="btn btn-info">Edit</a>
-                        <a href="{{url('delete/post/'.$row->id)}}" class="btn btn-danger">Delete</a>
-                        <a href="{{url('view/post/'.$row->id)}}" class="btn btn-success">view</a>
-                    </td>
-                </tr>
-                @endforeach
-
-            </table>
         </div>
     </div>
 

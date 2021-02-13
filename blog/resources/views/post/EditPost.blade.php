@@ -80,36 +80,61 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <a href="{{url('/blog')}}" class="btn btn-danger">Write Post</a>
+                <a href="{{route('all.post')}}" class="btn btn-info">All Post</a>
                 <hr>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <form action="{{ url('update/post/'.$post->id) }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Post Title</label>
+                            <input type="text" class="form-control" value="{{$post->title}}" name="title" required>
+                        </div>
+                    </div>
+                    <div class="control-group mb-2">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Category</label>
+                            <select name="category_id" class="form-control">
+                                @foreach ($category as $row)
+                                <option value="{{$row->id}}" @if($row->id == $post->category_id) {{"selected"}} @endif >
+                                    {{$row->name}}
+                                </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group col-xs-12 floating-label-form-group controls">
+                            <label>New Image</label>
+                            <input type="file" class="form-control" placeholder="Upload Image" id="phone" name="image">
+                            <img src="{{URl($post->image)}}" height="768px" width="1024px" >
+                            <input type="hidden" name="old_photo" value="{{$post->image}}">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls">
+                            <label>Details</label>
+                            <textarea rows="5" class="form-control"  name="details" id="message"
+                                required>{{$post->details}}</textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div id="success"></div>
+                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Update</button>
+                </form>
             </div>
-            <hr>
-            <table class="table table-risponsive">
-                <tr>
-                    <th>SL</th>
-                    <th>Category ID</th>
-                    <th>Title</th>
-                    <th>Image</th>
-                    <th>Action</th>
-                </tr>
-
-                @foreach($post as $row)
-                <tr>
-                    <td>{{$row->id}}</td>
-                    <td>{{$row->name}}</td>
-                    <td>{{$row->title}}</td>
-                    <td><img src="{{URL($row->image)}}" style="height: 50px; width:100px; "></td>
-                    <td>
-                        <a href="{{url('edit/post/'.$row->id)}}" class="btn btn-info">Edit</a>
-                        <a href="{{url('delete/post/'.$row->id)}}" class="btn btn-danger">Delete</a>
-                        <a href="{{url('view/post/'.$row->id)}}" class="btn btn-success">view</a>
-                    </td>
-                </tr>
-                @endforeach
-
-            </table>
         </div>
     </div>
+
+    <hr>
 
     <!-- Footer -->
     <footer>
@@ -147,6 +172,7 @@
             </div>
         </div>
     </footer>
+    
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('frontend/vendor/jquery/jquery.min.js') }}"></script>
