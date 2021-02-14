@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +39,12 @@ Route::get('all/post', [PostController::class, 'allpost'])->name('all.post');
 Route::get('view/post/{id}',[PostController::class, 'viewpost'])->name('view.post');
 Route::get('edit/post/{id}',[PostController::class, 'editpost'])->name('edit.post');
 Route::get('update/post/{id}', [PostController::class, 'updatepost'])->name('update.post');
+
+//Student 
+Route::get('/student', [StudentController::class, 'student']);
+Route::get('add/student', [StudentController::class, 'addstudent'])->name('add.student');
+Route::get('all/student', [StudentController::class, 'allstudent'])->name('all.student');
+Route::post('store/student', [StudentController::class, 'storeStudent'])->name('store.student');
 
 // Route::get('/{name}/{email}/{phone}', [SiteController::class, 'home']);
 
