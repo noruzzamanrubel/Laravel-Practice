@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoomdevsController;
 use App\Http\Controllers\MyController;
 use App\Http\Controllers\SingleController;
 use Illuminate\Support\Facades\Route;
@@ -50,6 +51,16 @@ Route::get('delete/student/{id}', [StudentController::class, 'deleteStudent'])->
 Route::get('edit/student/{id}', [StudentController::class, 'editStudent'])->name('edit.student');
 Route::get('update/student/{id}', [StudentController::class, 'updateStudent'])->name('update.student');
 
+
+//Boomdevs
+Route::get('/boomdevs', [BoomdevsController::class, 'boomdevs']);
+Route::get('/add/developer', [BoomdevsController::class, 'addDeveloper'])->name('add.developer');
+Route::get('/all/developer', [BoomdevsController::class, 'allDeveloper'])->name('all.developer');
+Route::post('/store/developer', [BoomdevsController::class, 'storeDeveloper'])->name('store.developer');
+Route::get('view/developer/{id}', [BoomdevsController::class, 'viewDeveloper'])->name('view.developer');
+Route::get('edit/developer/{id}', [BoomdevsController::class, 'editDeveloper'])->name('edit.developer');
+Route::get('delete/developer/{id}', [BoomdevsController::class, 'deleteDeveloper'])->name('delete.developer');
+Route::get('update/developer/{id}', [BoomdevsController::class, 'updateDeveloper'])->name('update.developer');
 // Route::get('/{name}/{email}/{phone}', [SiteController::class, 'home']);
 
 // Route::group(['prefix' => 'account'], function () {
