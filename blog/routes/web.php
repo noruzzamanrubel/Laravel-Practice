@@ -45,6 +45,10 @@ Route::get('/student', [StudentController::class, 'student']);
 Route::get('add/student', [StudentController::class, 'addstudent'])->name('add.student');
 Route::get('all/student', [StudentController::class, 'allstudent'])->name('all.student');
 Route::post('store/student', [StudentController::class, 'storeStudent'])->name('store.student');
+Route::get('view/student/{id}', [StudentController::class, 'viewStudent'])->name('view.student');
+Route::get('delete/student/{id}', [StudentController::class, 'deleteStudent'])->name('delete.student');
+Route::get('edit/student/{id}', [StudentController::class, 'editStudent'])->name('edit.student');
+Route::get('update/student/{id}', [StudentController::class, 'updateStudent'])->name('update.student');
 
 // Route::get('/{name}/{email}/{phone}', [SiteController::class, 'home']);
 

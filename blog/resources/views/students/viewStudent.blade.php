@@ -86,30 +86,13 @@
                 <a href="{{url('add/student')}}" class="btn btn-danger">Add Student</a>
                 <a href="{{url('all/student')}}" class="btn btn-info">All Student</a>
                 <hr>
+                <div>
+                    <ol>
+                        <li>Student Name: {{$student->name}}</li>
+                        <li>Student Age: {{$student->age}}</li>
+                    </ol>
+                </div>
             </div>
-            <hr>
-            <table class="table table-risponsive">
-                <tr>
-                    <th>SL</th>
-                    <th>Student Name</th>
-                    <th>Student Age</th>
-                    <th>Action</th>
-                </tr>
-
-                @foreach($student as $row)
-                <tr>
-                    <td>{{$row->id}}</td>
-                    <td>{{$row->name}}</td>
-                    <td>{{$row->age}}</td>
-                    <td>
-                        <a href="{{url('edit/student/'.$row->id)}}" class="btn btn-success">Edit</a>
-                        <a href="{{url('delete/student/'.$row->id)}}" class="btn btn-danger">Delete</a>
-                        <a href="{{url('view/student/'.$row->id)}}" class="btn btn-success">View</a>
-                    </td>
-                </tr>
-                @endforeach
-
-            </table>
         </div>
     </div>
 
