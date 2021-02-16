@@ -5,16 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class user extends Model
+class category extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
+        'category_name',
     ];
-
-    public function Phone(){
-        return $this->hasOne(Phone::class);
-    }
 }

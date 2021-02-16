@@ -8,6 +8,8 @@ use App\Http\Controllers\SiteController;
 use App\Http\Controllers\NewController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PhoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,6 +63,15 @@ Route::get('view/developer/{id}', [BoomdevsController::class, 'viewDeveloper'])-
 Route::get('edit/developer/{id}', [BoomdevsController::class, 'editDeveloper'])->name('edit.developer');
 Route::get('delete/developer/{id}', [BoomdevsController::class, 'deleteDeveloper'])->name('delete.developer');
 Route::get('update/developer/{id}', [BoomdevsController::class, 'updateDeveloper'])->name('update.developer');
+
+
+
+Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::get('/phone', [PhoneController::class, 'index'])->name('phone');
+
+
+
+
 // Route::get('/{name}/{email}/{phone}', [SiteController::class, 'home']);
 
 // Route::group(['prefix' => 'account'], function () {

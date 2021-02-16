@@ -21,7 +21,7 @@
         href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
         rel='stylesheet' type='text/css'>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" />
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('frontend/css/clean-blog.min.css') }}" rel="stylesheet">
@@ -54,6 +54,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/student') }}">Student</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/boomdevs') }}">Boomdevs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/users') }}">All Users</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -66,11 +75,7 @@
             <div class="row">
                 <div class="col-lg-8 col-md-10 mx-auto">
                     <div class="post-heading">
-                        <h1>Man must explore, and this is exploration at its greatest</h1>
-                        <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
-                        <span class="meta">Posted by
-                            <a href="#">Start Bootstrap</a>
-                            on August 24, 2019</span>
+                        <h1>All Users</h1>
                     </div>
                 </div>
             </div>
@@ -80,35 +85,24 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
-                <a href="{{url('add/student')}}" class="btn btn-danger">Add student</a>
-                <a href="{{url('all/student')}}" class="btn btn-info">All student</a>
-                <hr>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-                <form action="{{url('update/student/'.$edit->id)}}" method="GET">
-                    @csrf
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label>Category Name</label>
-                            <input type="text" class="form-control" value="{{$edit->name}}" name="name">
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls">
-                            <label>Slug Name</label>
-                            <input type="text" class="form-control" value="{{$edit->age}}" name="age">
-                        </div>
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary" id="sendMessageButton">Update</button>
-                </form>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($phone as $row)
+                            <tr>
+                                <td>{{ $row->User->name }}</td>
+                                <td>{{ $row->User->email }}</td>
+                                <td>{{ $row->phone }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -159,29 +153,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="{{ asset('frontend/js/clean-blog.min.js') }}"></script>
-
-    <script>
-        @if (Session::has('message'))
-            var type="{{ Session::get('alert-type', 'info') }}"
-            switch(type){
-            case 'info':
-            toastr.info("{{ Session::get('message') }}");
-            break;
-    
-            case 'success':
-            toastr.success("{{ Session::get('message') }}");
-            break;
-    
-            case 'warning':
-            toastr.warning("{{ Session::get('message') }}");
-            break;
-    
-            case 'error':
-            toastr.error("{{ Session::get('message') }}");
-            break;
-            }
-        @endif
-        </script>
 
 </body>
 

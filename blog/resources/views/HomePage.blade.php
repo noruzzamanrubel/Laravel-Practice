@@ -58,6 +58,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{url('/boomdevs')}}">Boomdevs</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/users')}}">All Users</a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -5,16 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class user extends Model
+class newpost extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
+        'user_id',
+        'category_id',
+        'title',
+        'description',
     ];
-
-    public function Phone(){
-        return $this->hasOne(Phone::class);
-    }
 }
