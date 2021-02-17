@@ -8,9 +8,9 @@ use App\Models\phone;
 
 class PhoneController extends Controller
 {
-    public function index()
-    {
-        $phone = Phone::all();
-        return view('user', compact('phone'));
-    }
+    // public function index()
+    // {
+    //     $phone = Phone::all();
+    //     return view('user', compact('phone'));
+    // }
 }

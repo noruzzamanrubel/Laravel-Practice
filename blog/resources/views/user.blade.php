@@ -88,16 +88,16 @@
                 <table class="table">
                     <thead>
                         <tr>
+                            <th scope="col">ID</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
                             <th scope="col">Phone</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($phone as $row)
+                        @foreach ($user as $row)
                             <tr>
-                                <td>{{ $row->User->name }}</td>
-                                <td>{{ $row->User->email }}</td>
+                                <td>{{ $row->id }}</td>
+                                <td>{{ $row->name }}</td>
                                 <td>{{ $row->phone }}</td>
                             </tr>
                         @endforeach
