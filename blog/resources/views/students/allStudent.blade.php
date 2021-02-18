@@ -101,6 +101,7 @@
                     <td>{{$row->id}}</td>
                     <td>{{$row->name}}</td>
                     <td>{{$row->age}}</td>
+
                     <td>
                         <a href="{{url('edit/student/'.$row->id)}}" class="btn btn-success">Edit</a>
                         <a href="{{url('delete/student/'.$row->id)}}" class="btn btn-danger">Delete</a>

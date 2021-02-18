@@ -98,7 +98,23 @@
                             <tr>
                                 <td>{{ $row->id }}</td>
                                 <td>{{ $row->name }}</td>
-                                <td>{{ $row->phone }}</td>
+                                <td>
+                                    @php
+                                        $i = 1;
+                                        $totalArr = count($row->phone()->select('phone')->get()->toArray());
+                                    @endphp
+
+                                    @foreach ($row->phone()->select('phone')->get()->toArray() as $item)
+                                        @php
+                                        $separator = ', ';
+                                            if ( $totalArr == $i ) {
+                                                $separator = '';
+                                            }
+                                            echo $item['phone']. $separator;
+                                            $i++;
+                                        @endphp
+                                    @endforeach
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

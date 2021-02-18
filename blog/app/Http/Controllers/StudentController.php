@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use App\Models\student;
 
 class StudentController extends Controller
 {
@@ -24,10 +25,11 @@ class StudentController extends Controller
             'name' => 'required|unique:students|max:25|min:4',
             'age' => 'required|:students|max:3|min:1',
         ]);
-        $data = array();
-        $data['name'] = $request->name;
-        $data['age'] = $request->age;
-        $student = DB::table('students')->insert($data);
+
+        $student = new Student();
+        $student->name = $request->name;
+        $student->age = $request->age;
+        $student->save();
         if ($student) {
             $notification = array(
                 'message' => 'Successfully Student Info Inserted',
@@ -45,19 +47,19 @@ class StudentController extends Controller
 
     public function allstudent()
     {
-        $student = DB::table('students')->get();
+        $student = Student::all();
         return view('students.allStudent', compact('student'));
     }
 
     public function viewStudent($id)
     {
-        $student = DB::table('students')->where('id', $id)->first();
+        $student = Student::findorfail($id);
         return view('students.viewStudent', compact('student'));
     }
 
     public function deleteStudent($id)
     {
-        $delete = DB::table('students')->where('id', $id)->delete();
+        $delete = Student::findorfail($id)->delete();
         $notification = array(
             'message' => 'Successfully Student Deleted',
             'alert-type' => 'success'
@@ -67,7 +69,7 @@ class StudentController extends Controller
 
     public function editStudent($id)
     {
-        $edit = DB::table('students')->where('id', $id)->first();
+        $edit = Student::findorfail($id);
         return view('students.editStudent', compact('edit'));
     }
 
@@ -78,10 +80,10 @@ class StudentController extends Controller
             'age' => 'required|max:3|min:1',
         ]);
 
-        $data = array();
-        $data['name'] = $request->name;
-        $data['age'] = $request->age;
-        $student = DB::table('students')->where('id', $id)->update($data);
+        $student= Student::find($request->id);
+        $student->name = $request->name;
+        $student->age = $request->age;
+        $student->save();
         if ($student) {
             $notification = array(
                 'message' => 'Successfully student Info Updated',
